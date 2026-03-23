@@ -1,33 +1,27 @@
-package br.com.fiapride.
-import br.com.fiapride.model.Passageiro;
+package br.com.fiapride.main;
 
-public class SistemaPrincipal {
+import br.com.fiapride.model.Veiculo;
+
+public class Principal {
 
     public static void main(String[] args) {
 
-        Passageiro passageiro1 = new Passageiro();
-        passageiro1.setNome("Ana Silva");
-        passageiro1.setSaldo(50.0);
-
-        Passageiro passageiro2 = new Passageiro();
-        passageiro2.setNome("Carlos Souza");
-        passageiro2.setSaldo(12.50);
-
         System.out.println("--- Sistema FiapRide ---");
 
-        System.out.println("Passageiro: " + passageiro1.getNome() + " | Saldo: R$" + passageiro1.getSaldo());
-        System.out.println("Passageiro: " + passageiro2.getNome() + " | Saldo: R$" + passageiro2.getSaldo());
+        Veiculo v1 = new Veiculo("Carlos", "ABC-1234");
 
-        System.out.println("\n--- Testando Métodos ---");
+        // Tentativa de valor inválido
+        v1.setCombustivel(-10); // deve bloquear
 
-        passageiro1.pagarCorrida(20);
-        passageiro2.pagarCorrida(20);
+        // Operações
+        v1.adicionarCombustivel(50);
+        v1.gastarCombustivel(100); // deve bloquear
 
-        passageiro2.adicionarSaldo(30);
+        // Exibição final
+        System.out.println("Dono: " + v1.getProprietario() +
+                " | Placa: " + v1.getPlaca() +
+                " | Combustível: " + v1.getCombustivel());
 
-        System.out.println("\n--- Saldo Final ---");
 
-        System.out.println("Passageiro: " + passageiro1.getNome() + " | Saldo: R$" + passageiro1.getSaldo());
-        System.out.println("Passageiro: " + passageiro2.getNome() + " | Saldo: R$" + passageiro2.getSaldo());
     }
 }
